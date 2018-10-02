@@ -1,0 +1,8 @@
+scalar DateTime
+
+type Mutation{
+    signin(username: String!, password: String!): String!
+    signup(username: String!, email: String!, password: String!): User!
+    checkUserNameAvailability(username: String!): Boolean!
+    checkEmailAvailability(email: String!): Boolean!
+}
