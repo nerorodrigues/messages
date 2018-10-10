@@ -44,17 +44,25 @@ class MessageList extends Component {
             }
         });
     }
+    componentDidMount() {
+        this.subscribeToNewMessages();
+    }
 
     render() {
         if (this.props.loading) return <div>Loading...</div>;
         if (this.props.error) return <div>Error... :(</div>;
         return (
-            <div>
-                <div>
-                    <MessageAddedContainer />
-                </div>
-                <div>
-                    {this.props.data.messages.map(pX => <h3 key={pX.id}>{pX.description}</h3>)}
+            <div>>
+                <div className="ui relaxed divided list">
+                    {this.props.data.messages.map(pX => {
+                        return (
+                            <div className="item" key={pX.id}>
+                                <div className="content" >
+                                    <a className="header">{pX.user.username} disse: </a>
+                                    <div className="description">{pX.description}</div>
+                                </div>
+                            </div>);
+                    })}
                 </div>
                 <div>
                     <AddMessageContainer>{addMessageInner}</AddMessageContainer>

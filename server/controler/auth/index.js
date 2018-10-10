@@ -15,7 +15,11 @@ module.exports = {
     },
 
     findUser: (db, email) => {
-        return db.user.findOne({ $or: [{ email: email }, { username: email }] });
+        return db.user.findOne({ $or: [{ email: email }, { userName: email }] });
+    },
+    findUserById: async(db, id) => {
+        var user = await db.user.find({});
+        return await db.user.findOne({ _id: id });
     },
     deleteUser: (db) => {
 

@@ -7,6 +7,9 @@ const ADD_MESSAGE = gql`
         addmessage(description: $description){
             id
             description
+            user{
+                username
+            }
         }
     }
 `

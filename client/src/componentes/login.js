@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { Redirect } from "react-router-dom";
-
-import SignInContainer from "../containers/auth/singin";
+import { Redirect } from 'react-router-dom';
+import { Input, Button } from 'semantic-ui-react';
+import SignInContainer from '../containers/auth/singin';
+import InputCheck from "./Utils/inputCheck";
+import { Link } from "react-router-dom";
 
 class Login extends Component {
 
@@ -15,7 +17,6 @@ class Login extends Component {
     constructor(props) {
         super(props);
         this.handleInputChange = this.handleInputChange.bind(this);
-        this.handleOnClickEntrar = this.handleOnClickEntrar.bind(this);
         this.handleState = this.handleState.bind(this);
     }
 
@@ -58,30 +59,54 @@ class Login extends Component {
             });
 
         }, (error) => {
-            console.log('Nero');
             if (error.networkError)
                 console.log(error.networkError.result.errors);
+            this.setState({
+                loading: false
+            });
         });
     }
 
+    checkPasswordCallback(evt) {
+        this.handleInputChange(evt);
+    }
+
+    userNameCallback(evt) {
+        this.handleInputChange(evt);
+    }
+
     render() {
-        
-        //const { from } = this.props.location.state || { from: { pathname: "/messages" } };
-        const { isLoggedIn } = this.state;
-        if (isLoggedIn) {
+        const { isLoggedIn, loading } = this.state;
+        var formClassName = 'ui form';
+        if (loading)
+            formClassName += ' loading';
+        if (isLoggedIn)
             return (<Redirect to={"/messages"} />)
-        }
-        if (this.state.loading)
-            return (<div>Loading...</div>)
         return (
-            <div>
-                <div>
-                    <input name="userName" value={this.state.userName} onChange={this.handleInputChange}></input>
+            <div className="ui two column centered grid">
+                <div className="ui raised very padded segment column " style={{ maxWidth: '650px', minWidth: '350px' }}>
+                    <div className={formClassName}>
+                        <div className="field">
+                            <label htmlFor="userName">Usuario / Email</label>
+                            <InputCheck name="userName" value={this.state.userName} callback={this.userNameCallback.bind(this)}></InputCheck>
+                        </div>
+                        <div className="field">
+                            <label htmlFor="password">Senha</label>
+                            <InputCheck name="password" type="password" value={this.state.password} callback={this.checkPasswordCallback.bind(this)}></InputCheck>
+                        </div>
+                        <div className="ui two column centered grid">
+                            <div className="column">
+                                <div className="row ui large buttons">
+                                    <Button color="vk" onClick={this.handleOnClickEntrar.bind(this)}>Entrar</Button>
+                                    <div className="or"></div>
+                                    <Link className="ui right labeled icon button simple" to="/signup">
+                                        <i className="signup icon"></i>Cadastrar
+                            </Link>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <input name="password" type="password" value={this.state.password} onChange={this.handleInputChange}></input>
-                </div>
-                <button onClick={this.handleOnClickEntrar}>Entrar</button>
             </div>
         )
     }

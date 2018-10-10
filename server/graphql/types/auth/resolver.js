@@ -15,7 +15,7 @@ module.exports = {
                     var senha = await bcryptjs.hash(args.password, 10);
                     if (await bcryptjs.compare(args.password, user.password)) {
                         return authenticate(
-                            { id: user.id, email: user.email },
+                            { id: user._id, email: user.email },
                             { expiresIn: '1d' }
                         );
                     }

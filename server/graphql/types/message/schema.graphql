@@ -1,6 +1,8 @@
 type Message{
-    id: ID!
+    id: ID
     description: String!
+    user: User
+    creationDate: DateTime!
 }
 
 type Query{

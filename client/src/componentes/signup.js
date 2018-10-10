@@ -1,8 +1,8 @@
 import React from 'react';
 import { SingUpContainer, CheckEmailAvailabilityContainer, CheckUserNameAvailabilityContainer } from '../containers/auth';
-import { Input, Button } from 'semantic-ui-react';
+import { Button, Message } from 'semantic-ui-react';
 import InputCheck from './Utils/inputCheck';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 class SignUpComponent extends React.Component {
 
     state = {
@@ -17,6 +17,11 @@ class SignUpComponent extends React.Component {
         isValid: false,
         loading: false,
     };
+
+    constructor(props) {
+        super(props);
+        console.log(props);
+    }
 
     submitHandler() {
         this.setState({ loading: true })
@@ -122,7 +127,7 @@ class SignUpComponent extends React.Component {
         if (this.state.success)
             return (<Redirect to="/signin"></Redirect>);
         return (
-            <div className="ui two column centered grid">
+            <div className="ui two column centered grid warning">
                 <div className="ui raised very padded segment column" style={{ maxWidth: '650px', minWidth: '350px' }}>
                     <div className={formClassName}>
                         <div className="field">
@@ -164,9 +169,20 @@ class SignUpComponent extends React.Component {
                                 icon={this.state.passwordStatus}
                                 callback={this.handleInputChange.bind(this)}></InputCheck>
                         </div>
-                        <div className="centered row">
-                            <Button color="vk" active={this.state.isValid} onClick={this.submitHandler.bind(this)}>Register</Button>
+                        <div className="ui two column centered grid">
+                            <div className="column">
+                                <div className="row right ui large buttons">
+                                    <Button color="vk" active={this.state.isValid} onClick={this.submitHandler.bind(this)}>Register</Button>
+                                    <div className="or"></div>
+                                    <Link className="ui right labeled icon button simple" to="/signin">
+                                        <i className="sign-in icon"></i>Login
+                            </Link>
+                                </div>
+                            </div>
                         </div>
+                        <Message warning>
+
+                        </Message>
                     </div>
                 </div>
             </div >

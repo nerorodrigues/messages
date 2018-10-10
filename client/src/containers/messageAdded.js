@@ -13,7 +13,7 @@ export const MESSAGE_ADDED = gql`
 
 const MessageAddedContainer = ({ children }) => <Subscription subscription={MESSAGE_ADDED}>{
     ({ ...props }) => {
-        if (!props.loading)
+        if (!props.loading && props.data)
             return (<h4>New Message: {props.data.messageAdded.description}</h4>);
         return null;
     }}

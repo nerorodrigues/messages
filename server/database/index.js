@@ -4,7 +4,7 @@ const Datastore = require('nedb-promise');
 const pkg = require('../package.json')
 
 const defaultDatabaseFilename = () => path.join(homedir(), `${pkg.name}`);
-const modelNames = ['user'];
+const modelNames = ['user','message'];
 
 const createDatabase = ({ filename = defaultDatabaseFilename(), autoload = true, ...rest } = {}) =>
     modelNames.reduce(
