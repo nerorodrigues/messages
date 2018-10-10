@@ -7,6 +7,9 @@ export const MESSAGE_ADDED = gql`
         messageAdded{
             id
             description
+            user{
+                username
+            }
         }
     }
 `;

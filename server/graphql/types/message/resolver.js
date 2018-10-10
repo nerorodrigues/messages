@@ -27,7 +27,7 @@ module.exports = {
                     creationDate: new Date()
                 };
 
-                messageAdded = messagesControler.addMessage(db, message);
+                messageAdded = await messagesControler.addMessage(db, message);
                 pubSub.publish('MESSAGE_ADDED', { messageAdded });
                 return messageAdded;
             }
