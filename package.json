@@ -1,0 +1,20 @@
+{
+  "name": "massage",
+  "version": "1.0.0",
+  "description": "Project of development of a system that allow an users send messages;",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+	"start": "cd server && node index.js",
+	"heroku-postbuild": "cd client && npm install && npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nerorodrigues/messages.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nerorodrigues/messages/issues"
+  },
+  "homepage": "https://github.com/nerorodrigues/messages#readme"
+}
