@@ -21,6 +21,8 @@ const initApp = async () => {
     const server = new ApolloServer({
         typeDefs: schema,
         resolvers: resolver,
+        introspection: true,
+        playground: true,
         context: ({ req }) => {
             if (req)
                 return {
@@ -48,7 +50,7 @@ const lauchServer = async (port) => {
         server.listen(port, err => (err ? reject(err) : resolve({ server, port }))));
 };
 
-lauchServer(3001).then(
+lauchServer(process.env.PORT || 3001).then(
     ({ server, port }) => {
         console.log(`Server listening on port ${port}`)
     });
