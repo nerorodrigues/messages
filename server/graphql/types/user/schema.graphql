@@ -1,10 +1,11 @@
 type User{
     id: ID!,
-    username: String!,
+    userName: String!,
     email: String!,
+    requested: Boolean
 }
 
 type Query{
     me: User!
-    # user(id: ID!): User!
+    users(userName: String): [User]
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import MessagesList from './componentes/messages';
 import Login from './componentes/login';
 import Signup from "./componentes/signup";
+import SearchContacts from "./componentes/searchContacts";
 import { BrowserRouter as Router, Route, Redirect, Link } from 'react-router-dom';
 import { Menu, Icon, Tab } from "semantic-ui-react";
 
@@ -51,15 +52,21 @@ const App = () => {
                         </Menu.Item>
                         <Menu.Item>
                             <Link to="/messages">
-                                <Icon name="mail" size="large" />
-                                Messages
-                        </Link>
+                                <Icon name="mail" size="large" />Messages
+                            </Link>
+                        </Menu.Item>
+                        <Menu.Item>
+                            <Link to="/search">
+                                Search Contacts
+                            </Link>
                         </Menu.Item>
                     </PrivateMenu>
+                    
                     <Route exact path="/" render={() => <Redirect to="/messages" />}></Route>
                     <PrivateRoute path="/messages" component={MessagesList}></PrivateRoute>
                     <Route path="/signin" component={Login}></Route>
                     <Route exact path="/signup" component={Signup}></Route>
+                    <PrivateRoute exact path="/search" component={SearchContacts} />
 
                 </div>
             </Router>

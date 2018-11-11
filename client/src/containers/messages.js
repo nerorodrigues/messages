@@ -8,7 +8,7 @@ export const MESSAGES = gql`
             id
             description
             user{
-                username
+                userName
             }
         }
     }

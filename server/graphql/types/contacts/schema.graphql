@@ -1,0 +1,17 @@
+type Contact{
+    id: ID!
+    userId: ID!
+    contactSince: DateTime!
+}
+
+type Query {
+    contactList: [Contact]!
+    pendentInvites:[Contact]
+    pendentRequests: [Contact]
+}
+
+type Mutation{
+    addContact(requestedUserId: ID!) : ID
+    removeContact(contactId: ID!) : ID
+    acceptInvitation(contactInvitationID: ID!) : ID
+}

@@ -10,7 +10,7 @@ module.exports = {
         DateTime: GraphQLDateTime,
         Mutation: {
             signin: async (root, args, { db }) => {
-                var user = await controler.findUser(db, args.username);
+                var user = await controler.findUser(db, args.userName);
                 if (user) {
                     var senha = await bcryptjs.hash(args.password, 10);
                     if (await bcryptjs.compare(args.password, user.password)) {
@@ -29,7 +29,7 @@ module.exports = {
                 return await controler.checkAvailability(db, { email: args.email });
             },
             checkUserNameAvailability: async (root, args, { db }) => {
-                return await controler.checkAvailability(db, { userName: args.username });
+                return await controler.checkAvailability(db, { userName: args.userName });
             }
         }
     }

@@ -5,7 +5,7 @@ const pubSub = new PubSub();
 
 module.exports = {
     resolver: {
-        User: { id: ({ _id }) => _id, username: ({ userName }) => userName },
+        User: { id: ({ _id }) => _id},
         Message: {
             id: ({ _id }) => _id,
             user: async (owner, args, { db }) => {

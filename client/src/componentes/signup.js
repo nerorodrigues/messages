@@ -27,7 +27,7 @@ class SignUpComponent extends React.Component {
         this.setState({ loading: true })
         this.props.mutation({
             variables: {
-                username: this.state.UserName,
+                userName: this.state.UserName,
                 email: this.state.email,
                 password: this.state.password,
             }
@@ -43,7 +43,7 @@ class SignUpComponent extends React.Component {
             var regex = /[a-zA-Z][a-zA-Z0-9-_]{3,32}$/;
             return regex.test(String(fieldValue).toLowerCase());
         })) {
-            mutation({ variables: { username: value } })
+            mutation({ variables: { userName: value } })
                 .then(pX => {
                     this.setState({
                         loadingUserNameInput: false

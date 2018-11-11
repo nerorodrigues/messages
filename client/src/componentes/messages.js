@@ -52,13 +52,13 @@ class MessageList extends Component {
         if (this.props.loading) return <div>Loading...</div>;
         if (this.props.error) return <div>Error... :(</div>;
         return (
-            <div>>
+            <div>
                 <div className="ui relaxed divided list">
                     {this.props.data.messages.map(pX => {
                         return (
                             <div className="item" key={pX.id}>
                                 <div className="content" >
-                                    <a className="header">{pX.user.username} disse: </a>
+                                    <a className="header">{pX.user.userName} disse: </a>
                                     <div className="description">{pX.description}</div>
                                 </div>
                             </div>);

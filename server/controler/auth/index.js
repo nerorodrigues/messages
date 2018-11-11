@@ -3,7 +3,7 @@ const bcryptjs = require('bcryptjs')
 module.exports = {
     saveUser: async (db, data) => {
         const user = {
-            userName: data.username,
+            userName: data.userName,
             email: data.email,
             password: await bcryptjs.hash(data.password, 10),
             creationDate: new Date(),

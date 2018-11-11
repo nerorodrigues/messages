@@ -48,7 +48,7 @@ class Login extends Component {
         });
         this.props.mutation({
             variables: {
-                username: this.state.userName,
+                userName: this.state.userName,
                 password: this.state.password
             }
         }).then(({ data }) => {
