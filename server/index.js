@@ -32,11 +32,11 @@ const initApp = async () => {
         }
     });
 
-    configureAuthMiddleware('/graphql', '/subscription', app, server);
+    configureAuthMiddleware('/api/graphql', '/api/subscription', app, server);
 
     server.applyMiddleware({
         app,
-        path: '/graphql',
+        path: '/api/graphql',
         cors: { origin: '*' },
         bodyParserConfig: bodyParser.json()
     });
